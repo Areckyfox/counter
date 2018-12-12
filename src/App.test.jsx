@@ -12,7 +12,7 @@ it("renders without crashing", () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-xit("increments counter", () => {
+it("increments counter", () => {
   const { getByText, getByTestId } = render(<App />);
   const countComponent = getByTestId("count");
   const initialCount = parseInt(countComponent.textContent, 10);
@@ -23,7 +23,7 @@ xit("increments counter", () => {
   expect(newCount).toEqual(initialCount + 1);
 });
 
-xit("decrements counter", () => {
+it("decrements counter", () => {
   const { getByText, getByTestId } = render(<App />);
   const countComponent = getByTestId("count");
   const initialCount = parseInt(countComponent.textContent, 10);
@@ -34,7 +34,7 @@ xit("decrements counter", () => {
   expect(newCount).toEqual(initialCount - 1);
 });
 
-xit("resets counter", () => {
+it("resets counter", () => {
   const { getByText, getByTestId } = render(<App />);
   const countComponent = getByTestId("count");
 
