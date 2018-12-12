@@ -44,7 +44,7 @@ it("resets counter", () => {
   expect(newCount).toEqual(0);
 });
 
-xit("sets counter value from input", () => {
+it("sets counter value from input", () => {
   const { getByText, getByTestId, getByLabelText } = render(<App />);
   const inputComponent = getByLabelText("Count value");
   const countComponent = getByTestId("count");
@@ -57,7 +57,7 @@ xit("sets counter value from input", () => {
   expect(inputComponent.value).toEqual("");
 });
 
-xit("prevents setting counter value from empty input", () => {
+it("prevents setting counter value from empty input", () => {
   const { getByText, getByTestId, getByLabelText } = render(<App />);
   const inputComponent = getByLabelText("Count value");
   const countComponent = getByTestId("count");

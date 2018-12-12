@@ -34,13 +34,34 @@ class App extends Component {
     this.setState({ count: 0 });
   };
 
+  handleCountInputChange = event => {
+    const countInputValue = event.currentTarget.value;
+
+    this.setState({ countInputValue });
+  };
+
+  handleInputValueSet = event => {
+    event.preventDefault();
+
+    this.setState(state => {
+      return {
+        count: parseInt(state.countInputValue, 10) || state.count,
+        countInputValue: ""
+      };
+    });
+  };
+
   render() {
-    const { count } = this.state;
+    const { count, countInputValue } = this.state;
 
     return (
       <div className="App">
         <h1 className="AppHeading">Counter</h1>
-        <Input />
+        <Input
+          value={countInputValue}
+          onChange={this.handleCountInputChange}
+          onSubmit={this.handleInputValueSet}
+        />
         <Counter count={count} />
         <Buttons
           handleIncrement={this.handleIncrement}
