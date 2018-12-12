@@ -48,6 +48,16 @@ class App extends Component {
     });
   };
 
+  handleNumberRemove = numberToRemoveId => () => {
+    this.setState(state => {
+      return {
+        savedNumbers: state.savedNumbers.filter(
+          savedNumber => savedNumber.id !== numberToRemoveId
+        )
+      };
+    });
+  };
+
   handleCountInputChange = event => {
     const countInputValue = event.currentTarget.value;
 
@@ -83,7 +93,10 @@ class App extends Component {
           handleReset={this.handleReset}
           handleNumberSave={this.handleNumberSave}
         />
-        <SavedNumbers savedNumbers={savedNumbers} />
+        <SavedNumbers
+          savedNumbers={savedNumbers}
+          handleNumberRemove={this.handleNumberRemove}
+        />
       </div>
     );
   }

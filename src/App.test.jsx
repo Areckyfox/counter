@@ -84,3 +84,58 @@ it("adds current count as first element of saved number list", () => {
   );
   expect(savedNumberList).toEqual([initialCount]);
 });
+
+it("adds multiple numbers to list", () => {
+  const { getByText, getByTestId, getAllByTestId } = render(<App />);
+
+  const countComponent = getByTestId("count");
+  const initialCount = parseInt(countComponent.textContent, 10);
+
+  fireEvent.click(getByText("Save"));
+  fireEvent.click(getByText("Increment"));
+  fireEvent.click(getByText("Save"));
+  fireEvent.click(getByText("Increment"));
+  fireEvent.click(getByText("Save"));
+
+  const savedNumberList = getAllByTestId("saved-number").map(
+    savedNumber => savedNumber.textContent
+  );
+  const expectedNumberList = [
+    initialCount.toString(),
+    (initialCount + 1).toString(),
+    (initialCount + 2).toString()
+  ];
+  expect(savedNumberList).toEqual(expectedNumberList);
+});
+
+it("removes numbers from list", () => {
+  const { getByText, getByTestId, getAllByTestId, getAllByText } = render(
+    <App />
+  );
+
+  const countComponent = getByTestId("count");
+  const initialCount = parseInt(countComponent.textContent, 10);
+
+  fireEvent.click(getByText("Save"));
+  fireEvent.click(getByText("Increment"));
+  fireEvent.click(getByText("Save"));
+  fireEvent.click(getByText("Increment"));
+  fireEvent.click(getByText("Save"));
+
+  let removeButtons = getAllByText("Remove");
+  expect(removeButtons).toHaveLength(3);
+
+  fireEvent.click(removeButtons[1]);
+
+  removeButtons = getAllByText("Remove");
+  expect(removeButtons).toHaveLength(2);
+
+  const savedNumberList = getAllByTestId("saved-number").map(
+    savedNumber => savedNumber.textContent
+  );
+  const expectedNumberList = [
+    initialCount.toString(),
+    (initialCount + 2).toString()
+  ];
+  expect(savedNumberList).toEqual(expectedNumberList);
+});
