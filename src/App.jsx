@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { uniqueId } from "lodash";
 
 import "./App.css";
 
@@ -34,6 +35,19 @@ class App extends Component {
     this.setState({ count: 0 });
   };
 
+  handleNumberSave = () => {
+    const newNumber = {
+      id: uniqueId(),
+      value: this.state.count
+    };
+
+    this.setState(state => {
+      return {
+        savedNumbers: state.savedNumbers.concat(newNumber)
+      };
+    });
+  };
+
   handleCountInputChange = event => {
     const countInputValue = event.currentTarget.value;
 
@@ -52,7 +66,7 @@ class App extends Component {
   };
 
   render() {
-    const { count, countInputValue } = this.state;
+    const { count, countInputValue, savedNumbers } = this.state;
 
     return (
       <div className="App">
@@ -67,8 +81,9 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           handleDecrement={this.handleDecrement}
           handleReset={this.handleReset}
+          handleNumberSave={this.handleNumberSave}
         />
-        <SavedNumbers />
+        <SavedNumbers savedNumbers={savedNumbers} />
       </div>
     );
   }

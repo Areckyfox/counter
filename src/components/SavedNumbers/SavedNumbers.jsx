@@ -2,14 +2,16 @@ import React from "react";
 
 import SavedNumber from "../SavedNumber/SavedNumber";
 
-const SavedNumbers = () => {
+const SavedNumbers = props => {
   return (
     <div className="SavedNumbers">
       <h2>Saved numbers:</h2>
-      <ul data-testid="saved-numbers">
-        <SavedNumber number={1} />
-        <SavedNumber number={2} />
-        <SavedNumber number={3} />
+      <ul>
+        {props.savedNumbers.map(savedNumber => {
+          return (
+            <SavedNumber key={savedNumber.id} number={savedNumber.value} />
+          );
+        })}
       </ul>
     </div>
   );

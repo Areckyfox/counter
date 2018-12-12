@@ -71,21 +71,16 @@ it("prevents setting counter value from empty input", () => {
   expect(inputComponent.value).toEqual("");
 });
 
-xit("adds current count to saved number list", () => {
-  const { getByText, getByTestId } = render(<App />);
+it("adds current count as first element of saved number list", () => {
+  const { getByText, getByTestId, getAllByTestId } = render(<App />);
 
   const countComponent = getByTestId("count");
   const initialCount = countComponent.textContent;
 
-  const savedNumbersComponent = getByTestId("saved-numbers");
-  const savedNumbersList = [...savedNumbersComponent.children].map(
-    savedNumber => savedNumber.textContent
-  );
-
   fireEvent.click(getByText("Save"));
 
-  const newSavedNumbersList = [...savedNumbersComponent.children].map(
+  const savedNumberList = getAllByTestId("saved-number").map(
     savedNumber => savedNumber.textContent
   );
-  expect(newSavedNumbersList).toEqual(savedNumbersList.concat(initialCount));
+  expect(savedNumberList).toEqual([initialCount]);
 });

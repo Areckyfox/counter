@@ -5,7 +5,8 @@ import Button from "../Button/Button";
 const SavedNumber = props => {
   return (
     <li>
-      {props.number} <Button label="Remove" />
+      <span data-testid="saved-number">{props.number}</span>
+      <Button label="Remove" />
     </li>
   );
 };
