@@ -4,7 +4,8 @@ import {
   resetCount,
   setCountInput,
   setCount,
-  addSavedNumber
+  addSavedNumber,
+  removeSavedNumber
 } from "./actionCreators";
 import {
   INCREMENT_COUNT,
@@ -12,7 +13,8 @@ import {
   RESET_COUNT,
   SET_COUNT_INPUT,
   SET_COUNT,
-  ADD_SAVED_NUMBER
+  ADD_SAVED_NUMBER,
+  REMOVE_SAVED_NUMBER
 } from "./actions";
 
 describe("actionCreators", () => {
@@ -61,5 +63,12 @@ describe("actionCreators", () => {
     expect(action.payload).toHaveProperty("id");
     expect(typeof action.payload.id).toBe("string");
     expect(action.payload.value).toBe(666);
+  });
+
+  it("creates REMOVE_SAVED_NUMBER action with expected payload", () => {
+    const action = removeSavedNumber("123");
+    expect(action.type).toBe(REMOVE_SAVED_NUMBER);
+    expect(typeof action.payload).toBe("string");
+    expect(action.payload).toBe("123");
   });
 });

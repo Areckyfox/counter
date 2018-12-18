@@ -127,7 +127,7 @@ it("adds multiple numbers to list", () => {
   expect(savedNumberList).toEqual(expectedNumberList);
 });
 
-xit("removes numbers from list", () => {
+it("removes numbers from list", () => {
   const {
     getByText,
     getByTestId,

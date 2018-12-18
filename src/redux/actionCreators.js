@@ -6,7 +6,8 @@ import {
   RESET_COUNT,
   SET_COUNT_INPUT,
   SET_COUNT,
-  ADD_SAVED_NUMBER
+  ADD_SAVED_NUMBER,
+  REMOVE_SAVED_NUMBER
 } from "./actions";
 
 export const incrementCount = () => {
@@ -50,5 +51,12 @@ export const addSavedNumber = savedNumberValue => {
   return {
     type: ADD_SAVED_NUMBER,
     payload
+  };
+};
+
+export const removeSavedNumber = savedNumberToRemoveId => {
+  return {
+    type: REMOVE_SAVED_NUMBER,
+    payload: savedNumberToRemoveId
   };
 };

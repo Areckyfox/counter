@@ -1,4 +1,4 @@
-import { addSavedNumber } from "./actionCreators";
+import { addSavedNumber, removeSavedNumber } from "./actionCreators";
 import savedNumbersReducer from "./savedNumbersReducer";
 
 describe("savedNumbersReducer", () => {
@@ -26,5 +26,28 @@ describe("savedNumbersReducer", () => {
     expect(state).toHaveLength(2);
     expect(state[0].value).toBe(10);
     expect(state[1].value).toBe(20);
+  });
+
+  it("handles REMOVE_SAVED_NUMBER action", () => {
+    const action = removeSavedNumber("94");
+    const initialState = [
+      {
+        id: "764",
+        value: 2004
+      },
+      {
+        id: "94",
+        value: 60
+      },
+      {
+        id: "123",
+        value: 120
+      }
+    ];
+    const state = savedNumbersReducer(initialState, action);
+
+    expect(state).toHaveLength(2);
+    expect(state[0].value).toBe(2004);
+    expect(state[1].value).toBe(120);
   });
 });

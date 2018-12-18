@@ -4,20 +4,14 @@ import { connect } from "react-redux";
 import SavedNumber from "../SavedNumber/SavedNumber";
 
 const SavedNumbers = props => {
-  const { savedNumbers, handleNumberRemove } = props;
+  const { savedNumbers } = props;
 
   return (
     <div className="SavedNumbers">
       <h2>Saved numbers:</h2>
       <ul>
         {savedNumbers.map(savedNumber => {
-          return (
-            <SavedNumber
-              key={savedNumber.id}
-              savedNumber={savedNumber}
-              handleNumberRemove={handleNumberRemove}
-            />
-          );
+          return <SavedNumber key={savedNumber.id} savedNumber={savedNumber} />;
         })}
       </ul>
     </div>

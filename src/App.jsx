@@ -8,16 +8,6 @@ import Buttons from "./components/Buttons/Buttons";
 import SavedNumbers from "./components/SavedNumbers/SavedNumbers";
 
 class App extends Component {
-  handleNumberRemove = numberToRemoveId => () => {
-    this.setState(state => {
-      return {
-        savedNumbers: state.savedNumbers.filter(
-          savedNumber => savedNumber.id !== numberToRemoveId
-        )
-      };
-    });
-  };
-
   render() {
     return (
       <div className="App">
@@ -25,7 +15,7 @@ class App extends Component {
         <Input />
         <Counter />
         <Buttons />
-        <SavedNumbers handleNumberRemove={this.handleNumberRemove} />
+        <SavedNumbers />
       </div>
     );
   }
