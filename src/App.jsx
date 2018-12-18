@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
 import { uniqueId } from "lodash";
 
 import "./App.css";
 
+import store from "./redux/store";
 import Counter from "./components/Counter/Counter";
 import Input from "./components/Input/Input";
 import Buttons from "./components/Buttons/Buttons";
@@ -79,25 +81,27 @@ class App extends Component {
     const { count, countInputValue, savedNumbers } = this.state;
 
     return (
-      <div className="App">
-        <h1 className="AppHeading">Counter</h1>
-        <Input
-          value={countInputValue}
-          onChange={this.handleCountInputChange}
-          onSubmit={this.handleInputValueSet}
-        />
-        <Counter count={count} />
-        <Buttons
-          handleIncrement={this.handleIncrement}
-          handleDecrement={this.handleDecrement}
-          handleReset={this.handleReset}
-          handleNumberSave={this.handleNumberSave}
-        />
-        <SavedNumbers
-          savedNumbers={savedNumbers}
-          handleNumberRemove={this.handleNumberRemove}
-        />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <h1 className="AppHeading">Counter</h1>
+          <Input
+            value={countInputValue}
+            onChange={this.handleCountInputChange}
+            onSubmit={this.handleInputValueSet}
+          />
+          <Counter count={count} />
+          <Buttons
+            handleIncrement={this.handleIncrement}
+            handleDecrement={this.handleDecrement}
+            handleReset={this.handleReset}
+            handleNumberSave={this.handleNumberSave}
+          />
+          <SavedNumbers
+            savedNumbers={savedNumbers}
+            handleNumberRemove={this.handleNumberRemove}
+          />
+        </div>
+      </Provider>
     );
   }
 }
