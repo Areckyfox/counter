@@ -12,7 +12,6 @@ import SavedNumbers from "./components/SavedNumbers/SavedNumbers";
 
 class App extends Component {
   state = {
-    count: 0,
     savedNumbers: [],
     countInputValue: ""
   };
@@ -78,7 +77,7 @@ class App extends Component {
   };
 
   render() {
-    const { count, countInputValue, savedNumbers } = this.state;
+    const { countInputValue, savedNumbers } = this.state;
 
     return (
       <Provider store={store}>
@@ -89,7 +88,7 @@ class App extends Component {
             onChange={this.handleCountInputChange}
             onSubmit={this.handleInputValueSet}
           />
-          <Counter count={count} />
+          <Counter />
           <Buttons
             handleIncrement={this.handleIncrement}
             handleDecrement={this.handleDecrement}
