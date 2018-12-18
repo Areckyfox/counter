@@ -38,6 +38,7 @@ xit("resets counter", () => {
   const { getByText, getByTestId } = render(<App />);
   const countComponent = getByTestId("count");
 
+  fireEvent.click(getByText("Increment"));
   fireEvent.click(getByText("Reset"));
 
   const newCount = parseInt(countComponent.textContent, 10);
