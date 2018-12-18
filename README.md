@@ -5,7 +5,7 @@ Simple counter application to practice state management patterns in React. Boots
 ## Setup
 
 ```
-$ git clone
+$ git clone https://github.com/wallchuck/counter.git
 $ cd counter
 $ yarn
 $ yarn start
@@ -13,7 +13,7 @@ $ yarn start
 
 ## Exercises
 
-Check out ➡️ [this gist](https://changeme) ⬅️ for follow-along exercies! Don't forget about the included tests:
+Check out ➡️ [this gist](https://gist.github.com/wallchuck/f17a44c180c264ca225b266eb79a2434) ⬅️ for follow-along exercies! Don't forget about the included tests:
 
 ```
 $ yarn test
