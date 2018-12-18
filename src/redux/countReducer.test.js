@@ -1,5 +1,10 @@
 import countReducer from "./countReducer";
-import { incrementCount, decrementCount, resetCount } from "./actionCreators";
+import {
+  incrementCount,
+  decrementCount,
+  resetCount,
+  setCount
+} from "./actionCreators";
 
 describe("countReducer", () => {
   it("provides initial state", () => {
@@ -28,5 +33,29 @@ describe("countReducer", () => {
     const state = countReducer(initialState, action);
 
     expect(state).toBe(0);
+  });
+
+  it("handles empty SET_COUNT action", () => {
+    const action = setCount();
+    const initialState = 10;
+    const state = countReducer(initialState, action);
+
+    expect(state).toBe(10);
+  });
+
+  it("handles SET_COUNT action with invalid payload", () => {
+    const action = setCount("test");
+    const initialState = 10;
+    const state = countReducer(initialState, action);
+
+    expect(state).toBe(10);
+  });
+
+  it("handles SET_COUNT action with payload", () => {
+    const action = setCount("123");
+    const initialState = 10;
+    const state = countReducer(initialState, action);
+
+    expect(state).toBe(123);
   });
 });

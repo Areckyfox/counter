@@ -12,8 +12,7 @@ import SavedNumbers from "./components/SavedNumbers/SavedNumbers";
 
 class App extends Component {
   state = {
-    savedNumbers: [],
-    countInputValue: ""
+    savedNumbers: []
   };
 
   handleNumberSave = () => {
@@ -39,35 +38,14 @@ class App extends Component {
     });
   };
 
-  handleCountInputChange = event => {
-    const countInputValue = event.currentTarget.value;
-
-    this.setState({ countInputValue });
-  };
-
-  handleInputValueSet = event => {
-    event.preventDefault();
-
-    this.setState(state => {
-      return {
-        count: parseInt(state.countInputValue, 10) || state.count,
-        countInputValue: ""
-      };
-    });
-  };
-
   render() {
-    const { countInputValue, savedNumbers } = this.state;
+    const { savedNumbers } = this.state;
 
     return (
       <Provider store={store}>
         <div className="App">
           <h1 className="AppHeading">Counter</h1>
-          <Input
-            value={countInputValue}
-            onChange={this.handleCountInputChange}
-            onSubmit={this.handleInputValueSet}
-          />
+          <Input />
           <Counter />
           <Buttons handleNumberSave={this.handleNumberSave} />
           <SavedNumbers

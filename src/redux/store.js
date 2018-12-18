@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from "redux";
 
 import count from "./countReducer";
+import countInput from "./countInputReducer";
 
 const initialState = {
   savedNumbers: [],
@@ -9,7 +10,8 @@ const initialState = {
 };
 
 const reducer = combineReducers({
-  count
+  count,
+  countInput
 });
 
 export default createStore(reducer, initialState);
