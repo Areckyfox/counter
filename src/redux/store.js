@@ -2,14 +2,16 @@ import { createStore, combineReducers } from "redux";
 
 import count from "./countReducer";
 import countInput from "./countInputReducer";
+import savedNumbers from "./savedNumbersReducer";
 
-const initialState = {
+export const initialState = {
   savedNumbers: [],
   count: 0,
   countInput: ""
 };
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
+  savedNumbers,
   count,
   countInput
 });

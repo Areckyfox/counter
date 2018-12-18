@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import SavedNumber from "../SavedNumber/SavedNumber";
 
@@ -23,4 +24,10 @@ const SavedNumbers = props => {
   );
 };
 
-export default SavedNumbers;
+const mapStateToProps = state => {
+  return {
+    savedNumbers: state.savedNumbers
+  };
+};
+
+export default connect(mapStateToProps)(SavedNumbers);

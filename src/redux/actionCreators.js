@@ -1,9 +1,12 @@
+import { uniqueId } from "lodash";
+
 import {
   INCREMENT_COUNT,
   DECREMENT_COUNT,
   RESET_COUNT,
   SET_COUNT_INPUT,
-  SET_COUNT
+  SET_COUNT,
+  ADD_SAVED_NUMBER
 } from "./actions";
 
 export const incrementCount = () => {
@@ -34,6 +37,18 @@ export const setCount = (payload = "") => {
 export const setCountInput = (payload = "") => {
   return {
     type: SET_COUNT_INPUT,
+    payload
+  };
+};
+
+export const addSavedNumber = savedNumberValue => {
+  const payload = {
+    id: uniqueId(),
+    value: savedNumberValue
+  };
+
+  return {
+    type: ADD_SAVED_NUMBER,
     payload
   };
 };

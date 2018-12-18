@@ -3,3 +3,4 @@ export const DECREMENT_COUNT = "DECREMENT_COUNT";
 export const RESET_COUNT = "RESET_COUNT";
 export const SET_COUNT_INPUT = "SET_COUNT_INPUT";
 export const SET_COUNT = "SET_COUNT";
+export const ADD_SAVED_NUMBER = "ADD_SAVED_NUMBER";
