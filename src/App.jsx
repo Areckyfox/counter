@@ -16,26 +16,6 @@ class App extends Component {
     countInputValue: ""
   };
 
-  handleIncrement = () => {
-    this.setState(state => {
-      return {
-        count: state.count + 1
-      };
-    });
-  };
-
-  handleDecrement = () => {
-    this.setState(state => {
-      return {
-        count: state.count - 1
-      };
-    });
-  };
-
-  handleReset = () => {
-    this.setState({ count: 0 });
-  };
-
   handleNumberSave = () => {
     const newNumber = {
       id: uniqueId(),
@@ -89,12 +69,7 @@ class App extends Component {
             onSubmit={this.handleInputValueSet}
           />
           <Counter />
-          <Buttons
-            handleIncrement={this.handleIncrement}
-            handleDecrement={this.handleDecrement}
-            handleReset={this.handleReset}
-            handleNumberSave={this.handleNumberSave}
-          />
+          <Buttons handleNumberSave={this.handleNumberSave} />
           <SavedNumbers
             savedNumbers={savedNumbers}
             handleNumberRemove={this.handleNumberRemove}

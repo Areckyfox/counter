@@ -1,22 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { incrementCount } from "../../redux/actionCreators";
+import {
+  incrementCount,
+  decrementCount,
+  resetCount
+} from "../../redux/actionCreators";
 
 import Button from "../Button/Button";
 
 const Buttons = props => {
   const {
-    handleDecrement,
-    handleReset,
-    handleNumberSave,
-    incrementCount
+    incrementCount,
+    decrementCount,
+    resetCount,
+    handleNumberSave
   } = props;
 
   return (
     <div className="Buttons">
-      <Button label="Decrement" onClick={handleDecrement} />
-      <Button label="Reset" onClick={handleReset} />
+      <Button label="Decrement" onClick={decrementCount} />
+      <Button label="Reset" onClick={resetCount} />
       <Button label="Increment" onClick={incrementCount} />
       <Button label="Save" onClick={handleNumberSave} />
     </div>
@@ -24,7 +28,9 @@ const Buttons = props => {
 };
 
 const mapDispatchToProps = {
-  incrementCount
+  incrementCount,
+  decrementCount,
+  resetCount
 };
 
 export default connect(
