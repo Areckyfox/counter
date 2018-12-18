@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const initialState = {
   savedNumbers: [],
   count: 0,
   countInput: ""
